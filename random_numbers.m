@@ -1,0 +1,11 @@
+clear; 
+clc; 
+close all;
+num_points = 100;       
+random_sequence = rand(1, num_points);  
+figure;
+plot(random_sequence, 'b-', 'LineWidth', 1.5);
+xlabel('Index');
+ylabel('Random Value');
+title('Random Number Sequence');
+grid on;

@@ -1,0 +1,28 @@
+
+clear;
+clc;
+close all;
+v0 = 50;                 
+angle = 45;            
+g = 9.81;             
+theta = deg2rad(angle);
+T_flight = (2 * v0 * sin(theta)) / g;     
+max_height = (v0^2 * (sin(theta))^2) / (2 * g); 
+range = (v0^2 * sin(2 * theta)) / g;        
+t = linspace(0, T_flight, 100);
+x = v0 * cos(theta) * t;          
+y = v0 * sin(theta) * t - 0.5 * g * t.^2; 
+figure;
+plot(x, y, 'b-', 'LineWidth', 1.5);
+hold on;
+plot(range, 0, 'ro', 'MarkerFaceColor', 'r');  
+plot(range / 2, max_height, 'go', 'MarkerFaceColor', 'g');  
+xlabel('Horizontal Distance (m)');
+ylabel('Vertical Distance (m)');
+title('Projectile Motion Trajectory');
+legend('Trajectory', 'Range', 'Max Height', 'Location', 'Best');
+fprintf('Total Time of Flight: %.2f s\n', T_flight);
+fprintf('Maximum Height: %.2f m\n', max_height);
+fprintf('Range: %.2f m\n', range);
+grid on;
+axis equal;
